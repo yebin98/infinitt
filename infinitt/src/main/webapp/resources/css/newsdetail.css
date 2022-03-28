@@ -61,15 +61,14 @@ img{
 .bcc_header1{
     display: flex;
     justify-content: space-between;
-    margin: 10px 40px;
-    
+    margin: 10px 0 10px 40px;
+    width: 100%;
     text-align : center;
     
     
 }
 
 .bcc_header1 h2{
-	
 	font-size : 1.2em;
 	font-weight : bold;
 	line-height: 60px;
@@ -138,13 +137,12 @@ img{
     width: 100%;
     height: auto;
     margin-bottom: 30px;
-    /* border-top: 1px solid #bbb; */
     border-bottom: 1px solid #bbb;
 }
 
 .bbc_container p{
     margin: 20px 16px;
-    line-height: 40px;
+    line-height: 30px;
 }
  
 .board_btn{

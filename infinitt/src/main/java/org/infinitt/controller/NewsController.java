@@ -6,7 +6,6 @@ import org.infinitt.domain.AttachFileDTO;
 import org.infinitt.domain.Criteria;
 import org.infinitt.domain.NewsDTO;
 import org.infinitt.domain.PageDTO;
-import org.infinitt.domain.PrevNextDTO;
 import org.infinitt.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,72 +33,56 @@ public class NewsController {
 		model.addAttribute("pageMaker", new PageDTO(cri, nservice.getTotalCount(cri)));
 	}
 	
-	//占쌜억옙占쏙옙 화占쏙옙占쏙옙占쏙옙
+	//글쓰기 화면으로
 	@GetMapping("newswrite")
 	public void newswrite() {}
 	
-	//占쌜억옙占쏙옙 占쏙옙튼占쏙옙 클占쏙옙占싹몌옙
+	//News
 	@PostMapping("newswrite")
 	public String newswritePost(NewsDTO news) {
-		
 		nservice.newswrite(news);
-		
 		return "redirect:/news/newsdetail?nbno="+news.getNbno();
 	}
-
 	
-
+	//News 목록 리스트에서 제목을 클릭하면
 	@GetMapping("newsdetail")
-	public void newsdetail(NewsDTO news, Model model/*, PrevNextDTO pnBoard*/) {
+	public void newsdetail(NewsDTO news, Model model) {
 		model.addAttribute("newsdetail", nservice.newsdetail(news));		
-		/*model.addAttribute("newsdetail2", nservice.newsdetail2(pnBoard));*/
-		
 	}
-	
 
+	//News 상세페이지에서 이미지를 출력하기 위한 select된 결과를 javascript로
 	@GetMapping(value="/fileList/{nbno}",produces= MediaType.APPLICATION_JSON_UTF8_VALUE)//ajax
 	public ResponseEntity<ArrayList<AttachFileDTO>> fileList1(@PathVariable int nbno){
-		//System.out.println("fileList");
-		System.out.println(nservice.fileList1(nbno));
-		
-		return new ResponseEntity<>(nservice.fileList1(nbno),HttpStatus.OK);
-		
+		System.out.println(nservice.nfileList(nbno));
+		return new ResponseEntity<>(nservice.nfileList(nbno),HttpStatus.OK);	
 	}
 	
-	//占쏙옙 占쏙옙占쏙옙 화占쏙옙占쏙옙占쏙옙
+	//글 수정 화면으로
 	@GetMapping("newsmodify")
 	public void newsmodify(NewsDTO news, Model model) {
 		model.addAttribute("newsdetail", nservice.newsdetail(news));
 	}
 	
-	//占쌜쇽옙占쏙옙 占쏙옙튼占쏙옙 클占쏙옙占싹몌옙
+	//글수정 버튼을 클릭하면
 	@PostMapping("newsmodify")
 	public String newsmodifyPost(AttachFileDTO aboard, NewsDTO news, RedirectAttributes rttr) {
 		nservice.newsmodify(news);
-		/*service.ainsert(aboard);*/
-		
 		rttr.addAttribute("nbno", news.getNbno());
 		return "redirect:/news/newsdetail?nbno="+news.getNbno();
 	}
 	
-	//占쌜삼옙占쏙옙 占쏙옙튼占쏙옙 클占쏙옙占싹몌옙
+	//글삭제 버튼을 클릭하면
 	@GetMapping("newsremove")
 	public String newsremove(NewsDTO news) {
-		//delete
 		nservice.newsremove(news);
 		return "redirect:/news/news";
 	}
 	
-	//湲��닔�젙 踰꾪듉�쓣 �겢由��븯硫�
-		@GetMapping("fileDelete")
-		public String fileDelete(AttachFileDTO attach, NewsDTO news) {
-			
-			nservice.fileDelete(attach);
-			System.out.println("boolean = " + nservice.fileDelete(attach));
-			
-			/*rttr.addAttribute("bno", board.getBno());*/
-			
-			return "redirect:/page/newsmodify?nbno="+news.getNbno();
-		}
-
+	//사진 삭제
+	@GetMapping("fileDelete")
+	public String fileDelete(AttachFileDTO attach, NewsDTO news) {
+		nservice.fileDelete(attach);
+		System.out.println("boolean = " + nservice.fileDelete(attach));
+		return "redirect:/page/newsmodify?nbno="+news.getNbno();
+	}
 }

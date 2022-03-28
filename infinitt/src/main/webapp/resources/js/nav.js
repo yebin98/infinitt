@@ -79,8 +79,4 @@ function fadeIn(el, display) {
     })();
 };
 
-
-
-scroll/**
- * 
- */
+scroll

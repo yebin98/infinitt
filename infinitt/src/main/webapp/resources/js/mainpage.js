@@ -79,6 +79,4 @@ function fadeIn(el, display) {
     })();
 };
 
-
-
 scroll

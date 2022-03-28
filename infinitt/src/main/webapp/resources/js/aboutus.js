@@ -1,19 +1,5 @@
 $(document).ready(function(){
 
-
-
-
-//	setInterval(() => {
-//
-//	    //window.scrollTo(0, -document.body.scrollHeight, "smooth")
-//	    //window.scrollTop();
-//	    window.scrollTo(0, document.body.scrollHeight, "smooth");
-//	    
-//	  },32);
-	
-	
-
-
 })
 
 p = 0; //초기 포커싱위치를 0으로 설정해주도록한다

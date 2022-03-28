@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.infinitt.domain.AttachFileDTO;
 import org.infinitt.domain.BoardDTO;
 import org.infinitt.domain.Criteria;
-import org.infinitt.domain.PrevNextDTO;
 import org.infinitt.domain.ReplyDTO;
 import org.infinitt.mapper.AttachMapper;
 import org.infinitt.mapper.BoardMapper;
@@ -23,11 +22,7 @@ public class BoardServiceImpl implements BoardService{
 	//게시판 글쓰기 설계된 것 구현
 	@Transactional
 	public void write(BoardDTO board) {
-		
-		System.out.println("ServiceImpl board = " + board);
-
 		bmapper.insertSelectKey(board);
-		
 		if(board.getAttachList() != null) {
 			board.getAttachList().forEach(attach->{
 				attach.setBno(board.getBno());
@@ -35,8 +30,7 @@ public class BoardServiceImpl implements BoardService{
 			});
 		}else {
 			System.out.println("사진을 선택하세요.");
-		}
-			
+		}	
 	}
 	
 	//게시판 목록리스트 설계된 것 구현
@@ -52,36 +46,18 @@ public class BoardServiceImpl implements BoardService{
 		return bmapper.detail(board);
 	}
 	
-	public PrevNextDTO detail2(PrevNextDTO pnBoard) {
-
-		return bmapper.detail2(pnBoard);
-	}
-	
 	//게시판 글수정 설계된 것 구현
 	@Transactional
 	public void modify(BoardDTO board) {
 		bmapper.modify(board);
-		
-		
-		/*board.getAttachList().forEach(attach->{
-			// 만약에 파일업로드 정보가 있으면
-			System.out.println(board.getAttachList());
-			if(board.getAttachList() != null) {
-				
-				System.out.println(board.getAttachList());
-				attach.setBno(board.getBno());
-				amapper.modify(attach);
-			}
-			
-			
-		});*/
-		
-		
 	}
 	
 	//게시판 글삭제 설계된 것 구현
 	public void remove(BoardDTO board) {
 		bmapper.remove(board);
+	}
+	public void remove(int bno) {
+		bmapper.remove(bno);
 	}
 	
 	//게사판 페이징에 쓰일 데이터건수
@@ -89,7 +65,7 @@ public class BoardServiceImpl implements BoardService{
 		return bmapper.getTotalCount(cri);
 	}
 	
-	//게시판 상세페이지에 파일업로드된 이미지 출력하는 것을 구현
+	//파일업로드
 	public ArrayList<AttachFileDTO> fileList(int bno){
 		return amapper.fileList(bno);
 	}
@@ -98,46 +74,36 @@ public class BoardServiceImpl implements BoardService{
 		return amapper.fileListPost(bno);
 	}
 
-	
 	public void delete(AttachFileDTO aboard) {
 		 amapper.delete(aboard);
 	}
 
-	
 	public boolean fileDelete(AttachFileDTO attach) {
 		return amapper.fileDelete(attach);
 	}
 	
+	//파일
+	public ArrayList<AttachFileDTO> imgGet(AttachFileDTO attach) {
+		 return amapper.imgGet(attach);
+	}
 	
-	
+	//댓글 쓰기
 	public void replyPost(ReplyDTO rdto) {
 		 bmapper.replyPost(rdto);
 	}
 	
+	//댓글 확인
 	public ArrayList<ReplyDTO> replyGet(ReplyDTO rdto) {
-		
 		 return bmapper.replyGet(rdto);
 	}
 	
-	public ArrayList<AttachFileDTO> imgGet(AttachFileDTO attach) {
-		
-		 return amapper.imgGet(attach);
-	}
-	
-	public void remove(int bno) {
-		bmapper.remove(bno);
-	}
-	public void removeReply(ReplyDTO rdto) {
-		bmapper.removeReply(rdto);
-	}
+	//댓글 수정
 	public void modifyReply(ReplyDTO rdto) {
 		bmapper.modifyReply(rdto);
 	}
 	
-	
-
-	
-		
-	
-	
+	//댓글 삭제
+	public void removeReply(ReplyDTO rdto) {
+		bmapper.removeReply(rdto);
+	}
 }

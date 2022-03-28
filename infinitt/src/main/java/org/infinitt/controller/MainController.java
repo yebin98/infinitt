@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
-	
 	@Autowired
 	private MemberService mservice;
 	
@@ -25,48 +24,29 @@ public class MainController {
 	
 	@GetMapping("mainpage")
 	public void mainpage(NewsDTO news, Model model) {
-		
 		model.addAttribute("news", nservice.getNews(news));
-		
 	}
 	
 	@GetMapping("login")
-	public void news() {
-		
-	}
+	public void news() {}
 	
 	@PostMapping("login")
 	public String Postlogin(MemberDTO mdto, HttpSession session) {
 		MemberDTO login=mservice.login(mdto);
-		
 		session.setAttribute("login", login);
-		
 		if(session.getAttribute("login")!=null) {
-					
 				return "redirect:/mainpage";
-				
-				
 			}else { 
-				
 				return "redirect:/login";
 			}
-		
 		}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception{
-		
 		session.invalidate();
-		
 		return "redirect:/mainpage";
 	}
 	
 	@GetMapping("aboutus")
-	public void aboutus() {
-		
-	}
-
-
+	public void aboutus() {}
 }
-
-

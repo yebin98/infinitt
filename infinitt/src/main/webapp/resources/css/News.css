@@ -81,7 +81,7 @@ img{
 }
 
 .table .title{
-	width: 65%;
+	width: 70%;
 	height: 50px;
     line-height: 50px;
 }
@@ -93,13 +93,13 @@ img{
 }
 
 .table .date{
-	width: 14%;
+	width: 10%;
 	height: 50px;
     line-height: 50px;
 }
 
 .table .cnt{
-	width: 6%;
+	width: 5%;
 	height: 50px;
     line-height: 50px;
 }

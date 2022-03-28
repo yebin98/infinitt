@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.infinitt.domain.AttachFileDTO;
 import org.infinitt.domain.Criteria;
 import org.infinitt.domain.NewsDTO;
-import org.infinitt.domain.PrevNextDTO;
 import org.infinitt.mapper.AttachMapper;
 import org.infinitt.mapper.NewsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,77 +19,56 @@ public class NewsServiceImpl implements NewsService{
 	@Autowired
 	private AttachMapper amapper;
 	
-	//占쌉쏙옙占쏙옙 占쌜억옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙 占쏙옙占쏙옙
+	//게시판 글쓰기 설계된 것 구현
 	@Transactional
 	public void newswrite(NewsDTO news) {
-		
-		
 		nmapper.insertSelectKey(news);
-		
 		if(news.getAttachList() != null) {
 			news.getAttachList().forEach(attach->{
 				attach.setNbno(news.getNbno());
-				amapper.insert1(attach);
+				amapper.ninsert(attach);
 			});
 		}else {
-			System.out.println("占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹쇽옙占쏙옙.");
-		}
-			
+			System.out.println("사진 없이 업로드");
+		}		
 	}
 	
-	//占쌉쏙옙占쏙옙 占쏙옙玖占쏙옙占싣� 占쏙옙占쏙옙占� 占쏙옙 占쏙옙占쏙옙
+	//게시판 목록리스트 설계된 것 구현
 	public ArrayList<NewsDTO> news(Criteria cri) {
 		return nmapper.news(cri);
 	}
 
 	@Transactional
-	//占쌉쏙옙占쏙옙 占쏙옙玖占쏙옙占싣�占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 클占쏙옙占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占쏙옙
+	//게시판 목록리스트에서 제목을 클릭했을 때 내용이 나오는 상세페이지 설계된 것을 구현
 	public NewsDTO newsdetail(NewsDTO news) {
-		//board占쏙옙占싱븝옙 占쏙옙회占쏙옙 占쌈쇽옙占쏙옙 +1
+		//조회수
 		nmapper.cntupdate(news);
 		return nmapper.newsdetail(news);
 	}
 	
-	/*public PrevNextDTO newsdetail2(PrevNextDTO pnBoard) {
-
-		return nmapper.newsdetail2(pnBoard);
-	}*/
-	
-	//占쌉쏙옙占쏙옙 占쌜쇽옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙 占쏙옙占쏙옙
+	//게시판 글수정 설계된 것 구현
 	@Transactional
 	public void newsmodify(NewsDTO news) {
 		nmapper.newsmodify(news);
-		/*news.getAttachList().forEach(attach->{
-			// 占쏙옙占썅에 占쏙옙占싹억옙占싸듸옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙
-			System.out.println(news.getAttachList());
-			if(news.getAttachList() != null) {
-				
-				System.out.println(news.getAttachList());
-				attach.setNbno(news.getNbno());
-				amapper.modify(attach);
-			}
-			
-			
-		});*/
 	}
 	
-	//占쌉쏙옙占쏙옙 占쌜삼옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙 占쏙옙占쏙옙
+	//게시판 글삭제 설계된 것 구현
 	public void newsremove(NewsDTO news) {
 		nmapper.newsremove(news);
 	}
 	
-	//占쌉삼옙占쏙옙 占쏙옙占쏙옙징占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占싶건쇽옙
+	//게사판 페이징에 쓰일 데이터건수
 	public int getTotalCount(Criteria cri) {
 		return nmapper.getTotalCount(cri);
 	}
 	
-	//占쌉쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占싹억옙占싸듸옙占� 占싱뱄옙占쏙옙 占쏙옙占쏙옙求占� 占쏙옙占쏙옙 占쏙옙占쏙옙
-	public ArrayList<AttachFileDTO> fileList1(int nbno){
-		return amapper.fileList1(nbno);
+	//파일업로드
+	public ArrayList<AttachFileDTO> nfileList(int nbno){
+		return amapper.nfileList(nbno);
 	}
 	
-	public ArrayList<AttachFileDTO> fileListPost1(int nbno){
-		return amapper.fileListPost1(nbno);
+	public ArrayList<AttachFileDTO> nfileListPost(int nbno){
+		return amapper.nfileListPost(nbno);
 	}
 	
 	public void delete(AttachFileDTO aboard) {
@@ -101,16 +79,9 @@ public class NewsServiceImpl implements NewsService{
 		return amapper.fileDelete(attach);
 	}
 	
+	//메인페이지
 	public ArrayList<NewsDTO> getNews(NewsDTO news) {
 
 		return nmapper.getNews(news);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

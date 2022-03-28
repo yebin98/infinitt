@@ -54,7 +54,6 @@ public class UploadController {
 			try {
 				multipartFile.transferTo(saveFile);//transferTo : 실제로 지정한 폴더에 업로드를 시켜주는 역활, 예외처리 필수
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}//end try
 		}//for문 end
@@ -65,16 +64,12 @@ public class UploadController {
 		//현재날짜를 추출(요일 월 일 시:분:초 KST 년도)
 		Date date = new Date();//util//기본생성자 호출
 		
-		//->2020-01-18로 출력하기(yyyy-mm-dd 형식으로 변경(시간 빼기))
+		//->yyyy-mm-dd 형식으로 변경(시간 빼기)
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");//MM은 대문자 필수 미닛하고 구별하기 위해
 		
-		//2020-01-18
 		String str = sdf.format(date);
 		System.out.println("date="+date);
 		System.out.println(str.replace("-", File.separator));
-		//str.replace("-", File.separator);
-		
-		//2020-01-18 -> 2022\01\18로 변경
 		return str.replace("-", File.separator);
 	}
 	
@@ -84,7 +79,6 @@ public class UploadController {
 			String contentType=Files.probeContentType(file.toPath());//파일의 타입을 알아내는 probeContentType메소드 호출하여 사용
 			return contentType.startsWith("image");//그 파일의 타입이 image이면 true, 그렇지 않으면 false
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -160,11 +154,9 @@ public class UploadController {
 					Thumbnailator.createThumbnail(multipartFile.getInputStream(),thumnail, 100, 100);
 					thumnail.close();//썸네일 종료(메모리 공간 함수)
 				}
-				
 				list.add(attachdto);//add : 값을 넣을 때 사용하는 메서드 
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}//end try
 		}//for문 end
@@ -185,14 +177,12 @@ public class UploadController {
 		try {
 			HttpHeaders header = new HttpHeaders();
 			result=new ResponseEntity<>(FileCopyUtils.copyToByteArray(file),header,HttpStatus.OK);
-		} catch (IOException e) {// TODO Auto-generated catch block
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
 	
-		
-		
 	//파일 업로드한 파일타입이 이미지가 아닐때(.txt, .xls, .ppt) 웹브라우저를 통해서 download할 수 있도록 한다.
 	//consumes : 들어오는 데이터 타입 정의(생략가능) //produces : 반환하는 데이터 타입 정의(생략가능)//*생략을 하게 되면, 웹브라우저가 알아서 타입을 판단(내가 원하는 타입이 아닐 수도 있음)*
 	//웹브라우저가 '이 파일은 download해야 하는 파일입니다.' 라는 것을 인지할 수 있도록 반환이 되어야 한다. 그러기 위해서는 MediaType.APPLICATION_OCTET_STREAM_VALUE 타입으로 반환데이터 타입을 선언한다.
@@ -207,7 +197,7 @@ public class UploadController {
 		HttpHeaders header = new HttpHeaders();
 		try {
 			header.add("Content-Disposition", "attachment; filename="+new String(resourceName.getBytes("UTF-8"),"ISO-8859-1"));
-		} catch (IOException e) {// TODO Auto-generated catch block
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<Resource>(resource,header,HttpStatus.OK);

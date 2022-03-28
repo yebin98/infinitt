@@ -29,7 +29,7 @@
 			<h1 class="titleW">News 글쓰기</h1>
 			<form action="/infinitt/news/newswrite" method="post" role="form">
 			
-				<input type="hidden" name = "writer" value="${login.id}">
+				<input type="hidden" name = "writer" value="${login.name}">
 				
 				<div>
 				    <div>

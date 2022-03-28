@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	// 서버에서 설정해 놓은 파일크기 설정
 	let maxSize=5242880;//5MB
 	// 서버에서 허용 불가능한 확장자 설정(정규식) : 규칙(파일 검증)
@@ -37,11 +36,9 @@ $(document).ready(function(){
 		formObj.append(str).submit();
 	})
 	
-	
 	//파일 선택의 내용이 변경되면
 	$("input[type='file']").on("change", function(e){	
 
-		
 		//가상의 form 태그
 		let formData = new FormData();
 		let inputFile=$("input[name='uploadFile']");
@@ -69,25 +66,9 @@ $(document).ready(function(){
 				console.log(result);
 				alert("upload성공")
 				showUploadedFile(result);
-				//actionForm.submit();
-
 			}
 		
 		})//$.ajax끝
-		
-
-		//=======================================================
-		
-//		var str="";
-//		//li태그에 있는
-//		$("#uploadResult ul li").each(function(i,obj){
-//			console.log(obj);
-//			str+="<input type='text' name='attachList["+i+"].fileName' value='"+$(obj).data("filename")+"'>"
-//			str+="<input type='text' name='attachList["+i+"].uuid' value='"+$(obj).data("uuid")+"'>"
-//			str+="<input type='text' name='attachList["+i+"].uploadPath' value='"+$(obj).data("path")+"'>"
-//			str+="<input type='text' name='attachList["+i+"].image' value='"+$(obj).data("type")+"'>"
-//		})
-//		formObj.append(str);
 	})
 
 	var actionForm = $("#actionForm");
@@ -96,23 +77,13 @@ $(document).ready(function(){
 		
 		console.log("aaa");
 		
-		//let bno = $("#bno").html();
-
-		
 		 if (confirm("파일을 삭제하시겠습니까?")) {
-			/*var targetFile = $(this).data("file");
-			var type = $(this).data("type");*/
 		    var targetLi = $(this).closest("li");
-		    
-		    
-		    targetLi.remove();
-		    
+		    targetLi.remove(); 
 		 }
 		 actionForm.submit();
 	});
-	
-	
-	
+
 })//$(document).ready(function(){ 끝
 
 //사용자가 선택한 파일을 원하는 경로에 성공적으로 업로드 한 후 웹브라우저에 파일을 띄워라에 대한 함수 선언(showUploadedFile)
@@ -135,9 +106,6 @@ function showUploadedFile(uploadresultArr){
 			str+="data-uuid='"+obj.uuid+"'data-filename='"+obj.fileName+"'data-type='"+obj.image+"'>"; 
 			str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='"+obj.image+"' class='btn'>";
 			str +="<span>X</span></button>"
-			/*str += "<input type='text' name='uuid' value='"+obj.uuid+"'>"
-			str += "<input type='text' name='fileName' value='"+obj.fileName+"'>"
-			str += "<input type='text' name='uploadPath' value='"+obj.uploadPath+"'>"*/
 			str+="<img src='/infinitt/display?fileName="+fileCallPath+"'></li>"
 		}
 	})

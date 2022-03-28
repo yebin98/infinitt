@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.infinitt.domain.AttachFileDTO;
 import org.infinitt.domain.BoardDTO;
 import org.infinitt.domain.Criteria;
-import org.infinitt.domain.PrevNextDTO;
 import org.infinitt.domain.ReplyDTO;
 
 public interface BoardMapper {
@@ -19,12 +18,8 @@ public interface BoardMapper {
 	//게시판 목록리스트와 관련되어있는 DB작업에 대한 설계
 	public ArrayList<BoardDTO> essay(Criteria cri);
 
-	
-
 	//게시판 목록리스트에서 제목을 클릭했을 때 내용이 나오는 상세페이지와 관련되어있는 DB작업에 대한 설계
 	public BoardDTO detail(BoardDTO board);
-	
-	public PrevNextDTO detail2(PrevNextDTO pnBoard);
 	
 	//게시판 목록리스트에서 제목을 클릭했을 때 조회수 +1 을 할 수 있는 DB작업에 대한 설계
 	public void cntupdate(BoardDTO board);
@@ -34,19 +29,20 @@ public interface BoardMapper {
 	
 	//게시판 글삭제와 관련되어있는 DB작업에 대한 설계
 	public void remove(BoardDTO board);
+	public void remove(int bno);
 	
 	//게시판 페이징에 쓰일 전체 건수와 관련되어있는 DB작업에 대한 설계
 	public int getTotalCount(Criteria cri);
 	
+	//댓글 쓰기
 	public void replyPost(ReplyDTO rdto);
 	
+	//댓글 확인
 	public ArrayList<ReplyDTO> replyGet(ReplyDTO rdto);
 	
-	
-	public void remove(int bno);
-	public void removeReply(ReplyDTO rdto);
+	//댓글 수정
 	public void modifyReply(ReplyDTO rdto);
 	
-
-	
+	//댓글 삭제
+	public void removeReply(ReplyDTO rdto);
 }

@@ -9,7 +9,6 @@ public class NewsDTO {
 	private String writer;
 	private String regdate;
 	private int cnt;
-	private int good;
 	private ArrayList<AttachFileDTO> attachList;
 	
 	public int getNbno() {
@@ -48,12 +47,6 @@ public class NewsDTO {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	public int getGood() {
-		return good;
-	}
-	public void setGood(int good) {
-		this.good = good;
-	}
 	public ArrayList<AttachFileDTO> getAttachList() {
 		return attachList;
 	}
@@ -64,7 +57,7 @@ public class NewsDTO {
 	@Override
 	public String toString() {
 		return "NewsDTO [nbno=" + nbno + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regdate=" + regdate + ", cnt=" + cnt + ", good=" + good + ", attachList=" + attachList + "]";
+				+ ", regdate=" + regdate + ", cnt=" + cnt + ", attachList=" + attachList + "]";
 	}
 	
 }

@@ -5,34 +5,26 @@ import java.util.ArrayList;
 import org.infinitt.domain.AttachFileDTO;
 
 public interface AttachMapper {
+	//	Essay
 	public void insert(AttachFileDTO board);
-	
-	public void insert1(AttachFileDTO news);
-	
-	public void rinsert(AttachFileDTO resume);
-	
-	public void delete(AttachFileDTO aboard);
-	/*public void ainsert(AttachFileDTO aboard);*/
-	
 	public ArrayList<AttachFileDTO> fileList(int bno);
-	
-	public ArrayList<AttachFileDTO> fileList1(int nbno);
-	
-	public ArrayList<AttachFileDTO> rfileList(int rbno);
-	
 	public void modify(AttachFileDTO board);
-	
-	public void newsmodify(AttachFileDTO news);
-	
 	public ArrayList<AttachFileDTO> fileListPost(int bno);
+	public ArrayList<AttachFileDTO> imgGet(AttachFileDTO attach);
 	
-	public ArrayList<AttachFileDTO> fileListPost1(int nbno);
+	//	News
+	public void ninsert(AttachFileDTO news);
+	public ArrayList<AttachFileDTO> nfileList(int nbno);
+	public void newsmodify(AttachFileDTO news);
+	public ArrayList<AttachFileDTO> nfileListPost(int nbno);
 	
+	// Resume
+	public void rinsert(AttachFileDTO resume);
+	public ArrayList<AttachFileDTO> rfileList(int rbno);
 	public ArrayList<AttachFileDTO> rfileListPost(int rbno);
+	
 	
 	public boolean fileDelete(AttachFileDTO attach);
 	
-	
-	public ArrayList<AttachFileDTO> imgGet(AttachFileDTO attach);
-
+	public void delete(AttachFileDTO aboard);
 }

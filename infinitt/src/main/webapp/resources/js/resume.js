@@ -1,15 +1,10 @@
 $(document).ready(function(){
-  
-	
-
-	
       let num = 3;
 	
 	$(".section_license").on("click",".addTable", function(){
 		
 		let str="";
-		
-		
+
 		str+="<tr>"
 		str+="<td class='lineup_center'><p>"
 		str+="<input type='hidden' value='" + num + "' class='num'>"
@@ -37,24 +32,16 @@ $(document).ready(function(){
 		$(".section_license tbody").append(str);
 		
 		num++;
-
-		
 	})
 	
 	$(".inpart_view").on("click",".delete_lisence", function(){
 
-		$(this).parent("tr").remove();
-	
-		
+		$(this).parent("tr").remove();		
 	})
-	
-	
-	
+
 	//========================================================================
 	
 	//school_year_start
-	
-	
 	$( function() {
         var dateFormat = "yy/mm",
           from = $( "#school_year_start" )
@@ -89,77 +76,10 @@ $(document).ready(function(){
 	
 	//====================
 	
-	//acquisition_date
-	
-	
 	$(document).on( "click", ".acquisition_date", function(){
 		
 		$(this).datepicker();
 		
 		
 	})
-	
-	//========
-	
-	/*let ac_num = 0;
-
-	$(document).on( "click",".acquisition_date", function(){
-		
-		ac_num = $(this).prevAll(".num").val();
-
-		
-        var dateFormat = "yy/mm",
-          from = $( "#from"+ac_num )
-            .datepicker({
-              defaultDate: "+1w",
-              changeMonth: true,
-              numberOfMonths: 1
-            })
-            .on( "change", function() {
-              to.datepicker( "option", "minDate", getDate( this ) );
-            }),
-          to = $( "#to"+ac_num ).datepicker({
-            defaultDate: "+1w",
-            changeMonth: true,
-            numberOfMonths: 1
-          })
-          .on( "change", function() {
-            from.datepicker( "option", "maxDate", getDate( this ) );
-          });
-     
-        function getDate( element ) {
-          var date;
-          try {
-            date = $.datepicker.parseDate( dateFormat, element.value );
-          } catch( error ) {
-            date = null;
-          }
-     
-          return date;
-        }
-        
-        
-      } );*/
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-      
-	
-	
-		
-
-
-
 })
-
-

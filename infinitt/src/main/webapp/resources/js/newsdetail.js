@@ -24,10 +24,3 @@ $(document).ready(function(){
 		$("#uploadResult ul").html(str)
 	})
 })
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
-
