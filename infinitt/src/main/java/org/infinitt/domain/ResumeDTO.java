@@ -20,9 +20,8 @@ public class ResumeDTO {
 	private String school_type;
 	private String school_name;
 	private String major;
-	//private int grades;
 	private String grades;
-	private String lisence_type;
+	private String license_type;
 	private String awards_name;
 	private String agency;
 	private String pass;
@@ -30,29 +29,17 @@ public class ResumeDTO {
 	private String intxt;
 	private String regdate;
 	private ArrayList<AttachFileDTO> attachList;
-	
 	private String school_year_start;
 	private String school_year_end;
 	private String acquisition_date_start;
 	private String acquisition_date_end;
-	
-	
-	
-	
-	
 
-	
-	
-	
 	public String getGrades() {
 	return grades;
 	}
 	public void setGrades(String grades) {
 		this.grades = grades;
 	}
-	
-	
-	
 	public int getRbno() {
 		return rbno;
 	}
@@ -101,7 +88,6 @@ public class ResumeDTO {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
 	public String getAddress() {
 		return address;
 	}
@@ -150,12 +136,11 @@ public class ResumeDTO {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	
-	public String getLisence_type() {
-		return lisence_type;
+	public String getLicense_type() {
+		return license_type;
 	}
-	public void setLisence_type(String lisence_type) {
-		this.lisence_type = lisence_type;
+	public void setLicense_type(String license_type) {
+		this.license_type = license_type;
 	}
 	public String getAwards_name() {
 		return awards_name;
@@ -199,9 +184,6 @@ public class ResumeDTO {
 	public void setAttachList(ArrayList<AttachFileDTO> attachList) {
 		this.attachList = attachList;
 	}
-	
-	
-	
 	public String getSchool_year_start() {
 		return school_year_start;
 	}
@@ -233,17 +215,11 @@ public class ResumeDTO {
 		return "ResumeDTO [rbno=" + rbno + ", job=" + job + ", title=" + title + ", name=" + name + ", birth=" + birth
 				+ ", gender=" + gender + ", email=" + email + ", tel=" + tel + ", address=" + address + ", school="
 				+ school + ", career=" + career + ", pay=" + pay + ", region=" + region + ", school_type=" + school_type
-				+ ", school_name=" + school_name + ", major=" + major + ", grades=" + grades + ", lisence_type="
-				+ lisence_type + ", awards_name=" + awards_name + ", agency=" + agency + ", pass=" + pass + ", intit="
+				+ ", school_name=" + school_name + ", major=" + major + ", grades=" + grades + ", license_type="
+				+ license_type + ", awards_name=" + awards_name + ", agency=" + agency + ", pass=" + pass + ", intit="
 				+ intit + ", intxt=" + intxt + ", regdate=" + regdate + ", attachList=" + attachList
 				+ ", school_year_start=" + school_year_start + ", school_year_end=" + school_year_end
 				+ ", acquisition_date_start=" + acquisition_date_start + ", acquisition_date_end="
 				+ acquisition_date_end + "]";
 	}
-	
-	
-	
-	
-
-	
 }

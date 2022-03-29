@@ -254,31 +254,31 @@
                 
                 <tbody>
                 
-                	<c:forEach items="${resume_lisence}" var="resume_lisence">
+                	<c:forEach items="${resume_license}" var="resume_license">
                     <tr>
 
                         <td class="lineup_center">
                         	<p>
                         		<label for="from2" ></label>
-                                <input type="text" id="from2" name="acquisition_date_start" style="width : 90px;" value="${resume_lisence.acquisition_date_start}" disabled>
+                                <input type="text" id="from2" name="acquisition_date_start" style="width : 90px;" value="${resume_license.acquisition_date_start}" disabled>
                                 <label for="to2">~</label>
-                                <input type="text" id="to2" name="acquisition_date_end" style="width : 90px;" value="${resume_lisence.acquisition_date_end}" disabled>
+                                <input type="text" id="to2" name="acquisition_date_end" style="width : 90px;" value="${resume_license.acquisition_date_end}" disabled>
                         	</p> 
                         </td>
                         <td class="lineup_center">
-                        	<input type="text" name="lisence_type" value="${resume_lisence.lisence_type}" disabled>
-                        	<!-- <select name="lisence_type" id="lisence_type">
+                        	<input type="text" name="license_type" value="${resume_license.license_type}" disabled>
+                        	<!-- <select name="license_type" id="license_type">
 	                            <option value="자격증/면허증">자격증/면허증</option>
 	                            <option value="어학">어학</option>
 	                            <option value="수상내역">수상내역</option>
                         	</select> -->
                         </td>
                         <td>
-                        	<input type="text" name="awards_name" value="${resume_lisence.awards_name}" class="lisence" disabled>  
+                        	<input type="text" name="awards_name" value="${resume_license.awards_name}" class="license" disabled>  
                         </td>
-                        <td><input type="text" name="agency" value="${resume_lisence.agency}" class="lisence" disabled> </td>
+                        <td><input type="text" name="agency" value="${resume_license.agency}" class="license" disabled> </td>
                         <td class="lineup_center">
-                        	<input type="text" name="pass" value="${resume_lisence.pass}" id="pass" disabled>
+                        	<input type="text" name="pass" value="${resume_license.pass}" id="pass" disabled>
                         	<!-- <select name="pass" id="pass">
 	                            <option value="1차 합격">1차 합격</option>
 	                            <option value="2차 합격">2차 합격</option>

@@ -18,37 +18,38 @@ public class ResumeServiceImpl implements ResumeService{
 	@Autowired
 	private AttachMapper amapper;
 	
-	/*@Transactional*/
+	//이력서 작성
 	public void resume(ResumeDTO resume) {
-		
 		System.out.println("resume attachList service = " + resume.getAttachList());
-		
 		rmapper.resume(resume);
-		
 		resume.getAttachList().forEach(attach->{
 			attach.setRbno(resume.getRbno());
 			amapper.rinsert(attach);
 		});
 	}
 	
+	//이력서 목록리스트
 	public ArrayList<ResumeDTO> resumelist(Criteria cri){
 		return rmapper.resumelist(cri);
 	}
 	
+	//이력서 상세페이지
 	@Transactional
 	public ResumeDTO resume_m(ResumeDTO resume) {
-		
 		return rmapper.resume_m(resume);
 	}
 	
-	public ArrayList<ResumeDTO> resume_lisence(int rbno) {
-		return rmapper.resume_lisence(rbno);
+	//이력서 자격증
+	public ArrayList<ResumeDTO> resume_license(int rbno) {
+		return rmapper.resume_license(rbno);
 	}
 	
+	//이력서 페이징에 쓰일 데이터건수
 	public int getTotalCount(Criteria cri) {
 		return rmapper.getTotalCount(cri);
 	}
 	
+	//파일 관련
 	public ArrayList<AttachFileDTO> rfileList(int rbno){
 		return amapper.rfileList(rbno);
 	}
@@ -56,10 +57,4 @@ public class ResumeServiceImpl implements ResumeService{
 	public ArrayList<AttachFileDTO> rfileListPost(int rbno){
 		return amapper.rfileListPost(rbno);
 	}
-	
-	
-	
-	
-	
-
 }

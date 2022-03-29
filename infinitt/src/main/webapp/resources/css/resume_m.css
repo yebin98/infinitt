@@ -336,7 +336,7 @@ h2{
 	padding: 4px 8px;
 }
 
-.inpart_view td #lisence_type{
+.inpart_view td #license_type{
 	padding: 4px 8px;
 }
 
@@ -348,11 +348,11 @@ h2{
 	width: 80px;
 }
 
-/* .lisence{
+/* .license{
 	width: 180px;
 } */
 
-.part_table tbody .delete_lisence{
+.part_table tbody .delete_license{
     display:none;
     background-color: #ffc107;
     width : 50px;
@@ -362,16 +362,16 @@ h2{
 }
 
 
-.part_table tbody tr:hover .delete_lisence{
+.part_table tbody tr:hover .delete_license{
     display : block;
 }
 
 
-.part_table tbody tr:hover .delete_lisence{
+.part_table tbody tr:hover .delete_license{
     display : block;
 }
 
-.part_table .delete_lisence{
+.part_table .delete_license{
     width: 50px;
     height: 50px;
     text-align: center;

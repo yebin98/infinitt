@@ -17,13 +17,9 @@ $(document).ready(function(){
 				var fileCallPath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);
 				console.log(fileCallPath)
 				//img태그를 사용해서 웹브라우저 이미지 출력
-				//str+="<li data-path='"+obj.uploadPath+"'";
-				//str+="data-uuid='"+obj.uuid+"'data-filename='"+obj.fileName+"'data-type='"+obj.image+"'>"; 
 				str+="<img class='img' src='/infinitt/display?fileName="+fileCallPath+"'>"
-				//str+= "</li>"
 			}
 		})
-		
 		$(".myPic").html(str)
 	})
 })

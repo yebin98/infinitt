@@ -67,23 +67,19 @@ $(document).ready(function(){
 				alert("upload성공")
 				showUploadedFile(result);
 			}
-		
 		})//$.ajax끝
 	})
 
 	var actionForm = $("#actionForm");
 	
 	$("#uploadResult").on("click", "button", function(){
-		
 		console.log("aaa");
-		
 		 if (confirm("파일을 삭제하시겠습니까?")) {
 		    var targetLi = $(this).closest("li");
 		    targetLi.remove(); 
 		 }
 		 actionForm.submit();
 	});
-
 })//$(document).ready(function(){ 끝
 
 //사용자가 선택한 파일을 원하는 경로에 성공적으로 업로드 한 후 웹브라우저에 파일을 띄워라에 대한 함수 선언(showUploadedFile)

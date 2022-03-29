@@ -282,17 +282,17 @@
                         	</p> 
                         </td>
                         <td class="lineup_center">
-                        	<select name="lisence_type" id="lisence_type">
+                        	<select name="license_type" id="license_type">
 	                            <option value="자격증/면허증">자격증/면허증</option>
 	                            <option value="어학">어학</option>
 	                            <option value="수상내역">수상내역</option>
                         	</select>
                         </td>
                         <td>
-                        	<input type="text" name="awards_name" class="lisence">  
+                        	<input type="text" name="awards_name" class="license">  
                         </td>
                         <td>
-                        	<input type="text" name="agency" class="lisence"> 
+                        	<input type="text" name="agency" class="license"> 
                         </td>
                         <td class="lineup_center">
                         	<select name="pass" id="pass">
@@ -301,7 +301,7 @@
 	                            <option value="최종 합격">최종 합격</option>
                         	</select>
                         </td>
-                        <td class="delete_lisence">X</td>
+                        <td class="delete_license">X</td>
                     </tr>
                     
 

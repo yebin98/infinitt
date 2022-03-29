@@ -14,7 +14,7 @@ $(document).ready(function(){
 		str+="<input type='text' id='to" + num + "' class='acquisition_date' name='acquisition_date_end' style='width : 100px;' class='hasDatepicker'>"
 		str+="</p> </td>"
 		str+="<td class='lineup_center'>"
-		str+="<select name='lisence_type' id='lisence_type'>"
+		str+="<select name='license_type' id='license_type'>"
 		str+="<option value='자격증/면허증'>자격증/면허증</option>"
 		str+="<option value='어학'>어학</option>"
 		str+="<option value='수상내역'>수상내역</option>"
@@ -28,13 +28,13 @@ $(document).ready(function(){
 		str+="<option value='2차 합격'>2차 합격</option>"
 		str+="<option value='최종 합격'>최종 합격</option>"
 		str+="</select>"
-		str+="</td><td class='delete_lisence'>X</td></tr>"
+		str+="</td><td class='delete_license'>X</td></tr>"
 		$(".section_license tbody").append(str);
 		
 		num++;
 	})
 	
-	$(".inpart_view").on("click",".delete_lisence", function(){
+	$(".inpart_view").on("click",".delete_license", function(){
 
 		$(this).parent("tr").remove();		
 	})
@@ -77,9 +77,6 @@ $(document).ready(function(){
 	//====================
 	
 	$(document).on( "click", ".acquisition_date", function(){
-		
 		$(this).datepicker();
-		
-		
 	})
 })
